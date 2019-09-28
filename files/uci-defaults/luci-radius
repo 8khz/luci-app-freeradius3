@@ -7,7 +7,7 @@ uci -q batch <<-EOF >/dev/null
     commit ucitrack
 EOF
 
-cat <<-EOF >/etc/freeradius2/sites/default
+cat <<-EOF >/etc/freeradius3/sites/default
 authorize {
 	eap {
 		ok = return

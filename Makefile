@@ -8,11 +8,14 @@ PKG_LICENSE:=GPLv2
 PKG_LICENSE_FILES:=LICENSE
 
 include $(INCLUDE_DIR)/package.mk
+include ../../luci.mk
+
+LUCI_TITLE:=Freeradius3 LuCI Interface
+LUCI_DEPENDS:=+luci-mod-admin-full
 
 define Package/luci-app-freeradius3
    SECTION:=luci
    CATEGORY:=LuCI
-   DEPENDS:=+freeradius3-democerts +freeradius3-mod-eap-mschapv2 +freeradius3-mod-eap-peap +freeradius3-mod-eap-tls +freeradius3-mod-files
    TITLE:=Radius Server Management
    MAINTAINER:=Jason Tse <jasontsecode@gmail.com>
    PKGARCH:=all
@@ -30,7 +33,7 @@ define Package/luci-app-freeradius3/install
 	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_CONF) ./files/config/radius $(1)/etc/config/radius
 	$(INSTALL_DIR) $(1)/etc/uci-defaults
-	$(INSTALL_BIN) ./files/uci-defaults/luci-freeradius $(1)/etc/uci-defaults/luci-radius
+	$(INSTALL_BIN) ./files/uci-defaults/luci-radius $(1)/etc/uci-defaults/luci-radius
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
 	$(INSTALL_DATA) ./files/controller/radius.lua $(1)/usr/lib/lua/luci/controller/radius.lua
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/model/cbi/radius

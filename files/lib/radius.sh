@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CONF="/etc/freeradius2"
+CONF="/etc/freeradius3"
 INIT="/etc/init.d/radiusd"
 
 . /lib/functions.sh

@@ -7,7 +7,7 @@ function index()
 
         entry({"admin", "services", "radius"},
                 alias("admin", "services", "radius", "users"),
-                _("Radius"), 70)
+                _("Freeradius"), 70)
 
         entry({"admin", "services", "radius", "users"},
                 cbi("radius/users"), _("Users"), 10).leaf = true
