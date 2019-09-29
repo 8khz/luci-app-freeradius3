@@ -7,7 +7,7 @@ uci -q batch <<-EOF >/dev/null
     commit ucitrack
 EOF
 
-cat <<-EOF >/etc/freeradius3/sites/default
+cat <<-EOF >/etc/freeradius3/sites-enabled/default
 authorize {
 	eap {
 		ok = return
@@ -27,3 +27,6 @@ session {
 EOF
 
 /usr/lib/radius.sh rebuild
+
+rm -f /tmp/luci-indexcache
+exit 0
