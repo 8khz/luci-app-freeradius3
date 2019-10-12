@@ -3,7 +3,11 @@ local sys = require "luci.sys"
 require "ubus"
 
 m = Map("radius", translate("Radius - Users"), translate("User Accounts."))
-m.on_after_commit = function() luci.sys.call("/usr/lib/radius.sh rebuild") end
+m.apply_on_parse = true
+
+function m.on_after_save(self)
+	sys.call("/usr/lib/radius.sh rebuild") 
+end
 
 s = m:section(TypedSection, "user", nil)
 s.template = "cbi/tblsection"
